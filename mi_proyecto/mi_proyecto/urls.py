@@ -1,0 +1,9 @@
+# En mi_proyecto/urls.py
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('mi_aplicacion.urls')),  # Verifica esta línea
+    # Otras configuraciones de URL...
+]

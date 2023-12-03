@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Análisis de Texto</title>
+    <link rel="icon" href="data:,">
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+ 
+h1, h2, h3 {
+    color: #333;
+}
+ 
+p {
+    color: #555;
+}
+ 
+
+#pagina-web-info {
+    margin-bottom: 20px;
+}
+ 
+#pagina-web-info p {
+    margin-bottom: 10px;
+}
+ 
+
+.parrafo-container {
+    margin-bottom: 30px;
+}
+ 
+.parrafo-container h2 {
+    color: #007bff;  
+}
+ 
+.parrafo-text {
+    margin-bottom: 15px;
+}
+ 
+
+.analisis-info {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+ 
+.analisis-info h1, .analisis-info h2 {
+    color: #28a745;  
+}
+ 
+
+.analisis-general {
+    margin-top: 30px;
+}
+ 
+.analisis-general h2 {
+    color: #dc3545;  
+}
+    </style>
+</head>
+<body>
+    <h1>Información de la Página Web</h1>
+    
+   
+    
+
+    
+    {% for parrafo in pagina_web.parrafo_set.all %}
+        <h2>Párrafo {{ forloop.counter }}:</h2>
+        <p>{{ parrafo.texto }}</p>
+        
+        
+        <h3>Análisis de Texto:</h3>
+        <p>Tokens: {{ parrafo.analisistexto.tokens }}</p>
+        <p>Etiquetas Gramaticales: {{ parrafo.analisistexto.tagged }}</p>
+        <p>Resumen: {{ parrafo.analisistexto.summary }}</p>
+        
+    {% endfor %}
+
+    {% if mostrar_informacion_analisis %}
+        <h1>Información de Análisis General:</h1>
+        <h2>Tokens:</h2>
+        <p>{{ tokens }}</p>
+
+        <h2>Texto Completo:</h2>
+        <p>{{ text }}</p>
+
+        <h2>Etiquetas Gramaticales:</h2>
+        <p>{{ tagged }}</p>
+
+        <h2>Resumen:</h2>
+        <p>{{ summary }}</p>
+    {% endif %}
+</body>
+</html>
